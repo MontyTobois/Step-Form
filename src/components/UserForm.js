@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import FormUserDetails from './FormUserDetails';
+import FormPersonalDetails from './FormPersonalDetails';
+import Confirm from './Confirm';
+import Success from './Success';
 
  export class UserForm extends Component { // eslint-disable-line react/prefer-stateless-function
   state = {
@@ -38,6 +41,7 @@ import FormUserDetails from './FormUserDetails';
     const { firstName, lastName, email, occupaction, city, bio } = this.state;
     const values = { firstName, lastName, email, occupaction, city, bio }
 
+// eslint-disable-next-line
     switch(step){
       case 1:
       return(
@@ -48,11 +52,22 @@ import FormUserDetails from './FormUserDetails';
         />
       )
       case 2:
-        return <h1>FormPersonalDetails</h1>
+        return (<FormPersonalDetails
+          nextStep = {this.nextStep}
+          handleChange = {this.handleChange}
+          values = {values}
+          prevStep = {this.prevStep}
+        />
+      );
       case 3:
-        return <h1>Confirm</h1>
+      return (<Confirm
+        nextStep = {this.nextStep}
+        values = {values}
+        prevStep = {this.prevStep}
+      />
+    );
       case 4:
-        return <h1>Success</h1>
+        return <Success />
     }
   }
 }

@@ -1,0 +1,77 @@
+import React, { Component } from 'react';
+import  MuiThemeProvider  from 'material-ui/styles/MuiThemeProvider';
+import  AppBar  from 'material-ui/AppBar';
+import  {List, ListItem}  from 'material-ui/List';
+import RaisedButton from 'material-ui/RaisedButton';
+
+export class FormUserDetails extends Component { // eslint-disable-line react/prefer-stateless-function
+  continue = e => {
+    e.preventDefault();
+    /// Process Form //
+    this.props.nextStep();
+  };
+
+  back = e => {
+    e.preventDefault();
+    this.props.prevStep();
+  };
+
+
+  render() {
+    const { values: {firstName, lastName, email, occupaction, city, bio} } = this.props;
+    return (
+      <MuiThemeProvider>
+        <React.Fragment>
+          <AppBar title = "Confirm User Info" />
+          <List>
+            <ListItem
+              primaryText="First Name"
+              secondaryText={ firstName }
+            />
+            <ListItem
+              primaryText="Last Name"
+              secondaryText={ lastName }
+            />
+            <ListItem
+              primaryText= "Email"
+              secondaryText={ email }
+            />
+            <ListItem
+              primaryText="Occupation"
+              secondaryText={ occupaction }
+            />
+            <ListItem
+              primaryText="City"
+              secondaryText={ city }
+            />
+            <ListItem
+              primaryText="Bio"
+              secondaryText={ bio }
+            />
+          </List>
+          <br/>
+          <RaisedButton
+            label="Confirm & Continue"
+            primay={true}
+            style={styles.button}
+            onClick={this.continue}
+          />
+          <RaisedButton
+            label="Back"
+            primay={false}
+            style={styles.button}
+            onClick={this.back}
+          />
+        </React.Fragment>
+      </MuiThemeProvider>
+    );
+  }
+}
+
+const styles = {
+  button:{
+    margin:15
+  }
+}
+
+export default FormUserDetails;
