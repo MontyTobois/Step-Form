@@ -7,6 +7,8 @@
 * [Language](#Language)
 * [Resource](#Resource)
 
+[DEMO](https://step-form.herokuapp.com/)
+
 ## Overview
 In this project, I wanted to design a step form where the user can input their information and move to the next page.
 
